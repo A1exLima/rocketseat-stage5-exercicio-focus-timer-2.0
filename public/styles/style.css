@@ -1,0 +1,97 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+:root {
+  font-size: 62.5%;
+  --bc-main: rgb(255, 255, 255);
+  --fc-timer: #323238;
+  --ff-timer: "Roboto";
+}
+
+.hide {
+  display: none;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+main {
+  font-size: 1.6rem;
+  background-color: var(--bc-main);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 19.2rem;
+  padding: 2rem;
+}
+
+.container-1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4.8rem;
+}
+
+.container-1 button{
+  transition: transform 500ms;
+}
+
+.container-1 button:hover{
+  transform: scale(1.1);
+}
+
+.container-2 {
+  display: grid;
+  place-content: center;
+  grid-template-areas: "col1 col2";
+  gap: 3.2rem;
+}
+
+.container-2 img {
+  width: min(13.8rem, 100%);
+  transition: transform 500ms;
+}
+
+.container-2 img:hover {
+  transform: scale(1.05);
+}
+
+
+.display-timer {
+  font-family: var(--ff-timer);
+  font-weight: 500;
+  font-size: 12.62rem;
+  color: var(--fc-timer);
+  line-height: normal;
+  display: flex;
+}
+
+.control-button {
+  display: flex;
+  gap: 4rem;
+}
+
+@media (max-width: 820px) {
+  main {
+    flex-direction: column;
+    row-gap: 10rem;
+  }
+}
+
+@media (max-width: 345px) {
+  .display-timer {
+    font-size: 10.62rem;
+  }
+  .control-button {
+    gap: 2.5rem;
+  }
+}
