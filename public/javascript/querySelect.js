@@ -19,4 +19,5 @@ export const querySelect = {
   containsCloud2: document.querySelector(".imgCloud2"),
   containsCoffe2: document.querySelector(".imgCoffe2"),
   containsFire2: document.querySelector(".imgFire2"),
+  
 }
