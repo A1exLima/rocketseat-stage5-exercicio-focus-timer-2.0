@@ -3,11 +3,11 @@ import { controlButtons } from "./controlButton.js"
 import { projectLogic} from "./projectLogic.js"
 import { audioData } from "./audio.js"
 
-const startupControl = {
+export const startupControl = {
   buttonPlay(event) {
     event.preventDefault(event)
-    controlButtons.play()
     audioData.buttonPressAudio.play()
+    projectLogic.setTimerAndPlay()
     console.log("Teste Play")
   },
 
@@ -15,25 +15,28 @@ const startupControl = {
     event.preventDefault(event)
     controlButtons.pause()
     audioData.buttonPressAudio.play()
+    projectLogic.clearTimeout()
     console.log("Teste Pause")
   },
 
   buttonStop(event) {
     event.preventDefault(event)
     audioData.buttonPressAudio.play()
+    projectLogic.StopDisplayTimer()
+    controlButtons.pause()
     console.log("Teste Stop")
   },
 
   buttonEncrement(event) {
     event.preventDefault(event)
     audioData.buttonPressAudio.play()
-    console.log("Teste +++")
+    projectLogic.setEncrement()
   },
 
   buttonDecrement(event) {
     event.preventDefault(event)
     audioData.buttonPressAudio.play()
-    console.log("Teste ---")
+    projectLogic.setDecrement()
   },
 
   buttonLofiTree(event) {

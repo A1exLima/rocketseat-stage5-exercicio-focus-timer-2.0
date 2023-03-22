@@ -1,5 +1,4 @@
 import { querySelect } from "./querySelect.js"
-import { audioData } from "./audio.js"
 
 export const controlButtons = {
   play() {

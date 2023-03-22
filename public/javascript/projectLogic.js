@@ -1,5 +1,12 @@
 import { querySelect } from "./querySelect.js"
 import { audioData } from "./audio.js"
+import { controlButtons } from "./controlButton.js"
+
+let IdTimerOut
+let minutes
+let seconds
+let displayMinute
+let displaySecond 
 
 export const projectLogic = {
   verificationHideButtonLoFi() {
@@ -127,5 +134,116 @@ export const projectLogic = {
     if (containsFire) {
       audioData.lofiAudioFire.pause()
     }
-  }
+  },
+
+  countDown() {
+    IdTimerOut = setTimeout(function () {
+      minutes = querySelect.displayMinute.textContent
+      seconds = querySelect.displaySecond.textContent
+
+      if (seconds <= 0) {
+        seconds = 60
+        querySelect.displayMinute.textContent = String(--minutes).padStart(
+          2,
+          "0"
+        )
+      }
+
+      querySelect.displaySecond.textContent = String(--seconds).padStart(2, "0")
+
+      if (minutes == 0 && seconds == 0) {
+        projectLogic.clearTimeout(IdTimerOut)
+        controlButtons.pause()
+        audioData.kitchenTimer.play()
+        return
+      }
+
+      projectLogic.countDown()
+    }, 10)
+  },
+
+  clearTimeout() {
+    clearTimeout(IdTimerOut)
+  },
+
+  StopDisplayTimer() {
+    projectLogic.clearTimeout()
+    querySelect.displaySecond.textContent = String(displaySecond).padStart(
+      2,
+      "0"
+    )
+    querySelect.displayMinute.textContent = String(displayMinute).padStart(
+      2,
+      "0"
+    )
+  },
+
+  setTimerAndPlay() {
+    minutes = querySelect.displayMinute.textContent
+    seconds = querySelect.displaySecond.textContent
+
+    let minAndSecReset = minutes == 0 && seconds == 0
+
+    if (minAndSecReset) {
+      alert("ADICIONE um valor para MINUTOS e um valor para SEGUNDOS")
+    } else {
+      projectLogic.countDown()
+      controlButtons.play()
+    }
+  },
+
+  setEncrement() {
+    minutes = querySelect.displayMinute.textContent
+    seconds = querySelect.displaySecond.textContent
+
+    if (minutes == 60 && seconds == 0) {
+      querySelect.displaySecond.textContent = String(-5).padStart(2, "0")
+      querySelect.displayMinute.textContent = String(0).padStart(2, "0")
+    }
+
+    if (seconds == 59) {
+      seconds = -5
+      querySelect.displayMinute.textContent = String(
+        Number(minutes) + 5
+      ).padStart(2, "0")
+    }
+    if (seconds != 55) {
+      querySelect.displaySecond.textContent = String(
+        Number(seconds) + 5
+      ).padStart(2, "0")
+    } else {
+      querySelect.displaySecond.textContent = String(59).padStart(2, "0")
+    }
+
+    displayMinute = querySelect.displayMinute.textContent
+    displaySecond = querySelect.displaySecond.textContent
+  },
+
+  setDecrement() {
+    minutes = querySelect.displayMinute.textContent
+    seconds = querySelect.displaySecond.textContent
+
+    querySelect.displaySecond.textContent = String(Number(seconds) - 5).padStart(2, "0")
+    
+    if(seconds == 0 && minutes == 0){
+      querySelect.displaySecond.textContent = String(0).padStart(2, "0")
+      querySelect.displayMinute.textContent = String(60).padStart(2, "0")
+    }
+
+    if (seconds == 0 && minutes > 0) {
+      querySelect.displayMinute.textContent = String(Number(minutes) - 5).padStart(2, "0")
+      seconds = 64
+      querySelect.displaySecond.textContent = String(Number(seconds) - 5).padStart(2, "0")
+    }
+
+    if(seconds == 59){
+      querySelect.displaySecond.textContent = String(Number(seconds) - 4).padStart(2, "0")
+    }
+
+    
+    
+
+    displayMinute = querySelect.displayMinute.textContent
+    displaySecond = querySelect.displaySecond.textContent
+  },
 }
