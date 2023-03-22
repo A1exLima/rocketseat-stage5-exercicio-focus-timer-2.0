@@ -23,7 +23,6 @@ export const startupControl = {
     audioData.buttonPressAudio.play()
     projectLogic.StopDisplayTimer()
     controlButtons.pause()
-    console.log("Teste Stop")
   },
 
   buttonEncrement(event) {
