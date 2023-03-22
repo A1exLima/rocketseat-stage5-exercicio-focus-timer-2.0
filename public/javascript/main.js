@@ -29,12 +29,14 @@ export const startupControl = {
     event.preventDefault(event)
     audioData.buttonPressAudio.play()
     projectLogic.setEncrement()
+    projectLogic.removeAlertContainerDisplay()
   },
 
   buttonDecrement(event) {
     event.preventDefault(event)
     audioData.buttonPressAudio.play()
     projectLogic.setDecrement()
+    projectLogic.removeAlertContainerDisplay()
   },
 
   buttonLofiTree(event) {

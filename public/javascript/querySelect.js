@@ -22,4 +22,5 @@ export const querySelect = {
 
   displayMinute: document.querySelector(".disply-minute"),
   displaySecond: document.querySelector(".display-second"),
+  containerAlertMinSec: document.querySelector(".alert-minute-second"),
 }

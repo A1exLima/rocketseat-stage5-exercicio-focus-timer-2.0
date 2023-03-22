@@ -185,11 +185,16 @@ export const projectLogic = {
     let minAndSecReset = minutes == 0 && seconds == 0
 
     if (minAndSecReset) {
-      alert("ADICIONE um valor para MINUTOS e um valor para SEGUNDOS")
+      querySelect.containerAlertMinSec.classList.add("hide-alert")
     } else {
       projectLogic.countDown()
       controlButtons.play()
+      projectLogic.removeAlertContainerDisplay()
     }
+  },
+
+  removeAlertContainerDisplay() {
+    querySelect.containerAlertMinSec.classList.remove("hide-alert")
   },
 
   setEncrement() {
@@ -256,35 +261,46 @@ export const projectLogic = {
     seconds = Array.from(seconds).pop()
 
     if (seconds != 0 && seconds != 5) {
-      
       if (seconds >= 1 && seconds <= 4) {
         seconds = Array.from(querySelect.displaySecond.textContent).shift()
-        querySelect.displaySecond.textContent = String(seconds + 0).padStart(2,"0")
+        querySelect.displaySecond.textContent = String(seconds + 0).padStart(
+          2,
+          "0"
+        )
       }
 
       if (seconds >= 6 && seconds <= 9) {
         seconds = Array.from(querySelect.displaySecond.textContent).shift()
-        querySelect.displaySecond.textContent = String(seconds + 5).padStart(2,"0")}
+        querySelect.displaySecond.textContent = String(seconds + 5).padStart(
+          2,
+          "0"
+        )
+      }
     }
   },
 
   DecrementverificationPauseDisplayMinutesAndSeconds() {
     minutes = querySelect.displayMinute.textContent
     seconds = querySelect.displaySecond.textContent
-    
+
     seconds = Array.from(seconds).pop()
 
     if (seconds != 0 && seconds != 5) {
-
       if (seconds >= 1 && seconds <= 4) {
         seconds = Array.from(querySelect.displaySecond.textContent).shift()
-        querySelect.displaySecond.textContent = String(seconds + 5).padStart(2,"0")
+        querySelect.displaySecond.textContent = String(seconds + 5).padStart(
+          2,
+          "0"
+        )
       }
 
       if (seconds >= 6 && seconds <= 9) {
         seconds = Array.from(querySelect.displaySecond.textContent).shift()
         Number(seconds++)
-        querySelect.displaySecond.textContent = (String(seconds) + 0).padStart(2,"0")
+        querySelect.displaySecond.textContent = (String(seconds) + 0).padStart(
+          2,
+          "0"
+        )
       }
     }
   },
