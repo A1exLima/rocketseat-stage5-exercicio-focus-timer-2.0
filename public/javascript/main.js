@@ -8,7 +8,6 @@ export const startupControl = {
     event.preventDefault(event)
     audioData.buttonPressAudio.play()
     projectLogic.setTimerAndPlay()
-    console.log("Teste Play")
   },
 
   buttonPause(event) {
@@ -16,7 +15,7 @@ export const startupControl = {
     controlButtons.pause()
     audioData.buttonPressAudio.play()
     projectLogic.clearTimeout()
-    console.log("Teste Pause")
+    
   },
 
   buttonStop(event) {
@@ -56,7 +55,6 @@ export const startupControl = {
     projectLogic.pauseContentHideCloud()
     controlButtons.LofiCloud()
     audioData.buttonPressAudio.play()
-    console.log("Teste Cloud")
 
   },
 
@@ -67,7 +65,6 @@ export const startupControl = {
     projectLogic.pauseContentHideCoffe()
     controlButtons.LofiCoffe()
     audioData.buttonPressAudio.play()
-    console.log("Teste Coffe")
   },
 
   buttonLofiFire(event) {
@@ -77,7 +74,6 @@ export const startupControl = {
     projectLogic.pauseContentHideFire()    
     controlButtons.LofiFire()
     audioData.buttonPressAudio.play()
-    console.log("Teste Fire")
   },
 }
 
