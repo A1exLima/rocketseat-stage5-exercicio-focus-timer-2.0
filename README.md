@@ -34,10 +34,10 @@ Cada card que se encontra do lado direito, quando selecionado, vai mudar de cor 
 
 Funcionalidades esperadas dos botões:
 
-- Play: Aciona o timer;
-- Stop: Para o timer;
-- + :   Aumenta em mais 5 minutos o tempo do timer;
-- - :   Diminui em 5 minutos o tempo do timer.
+- Play:   Aciona o timer;
+- Stop:   Para o timer;
+- Mais:   Aumenta em mais 5 minutos o tempo do timer;
+- Menos:  Diminui em 5 minutos o tempo do timer.
   
 Diferencial feito nesse projeto, foi que caso ocorra pause e o display segundos cair em qualquer número que não seja a primeira casa decimal diferente de 0 ou 5, ao encrementar a lógica do programa corrigi automáticamente para o encremento em 5 e 5 segundos.
 
