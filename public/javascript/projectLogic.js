@@ -155,6 +155,7 @@ export const projectLogic = {
         projectLogic.clearTimeout(IdTimerOut)
         controlButtons.pause()
         audioData.kitchenTimer.play()
+        IdTimerOut = 0
         return
       }
 
@@ -198,6 +199,11 @@ export const projectLogic = {
   },
 
   setEncrement() {
+
+    if(IdTimerOut > 0){
+      return
+    }
+
     projectLogic.EncrementverificationPauseDisplayMinutesAndSeconds()
 
     minutes = querySelect.displayMinute.textContent
@@ -224,6 +230,11 @@ export const projectLogic = {
   },
 
   setDecrement() {
+
+    if (IdTimerOut > 0) {
+      return
+    }
+    
     projectLogic.DecrementverificationPauseDisplayMinutesAndSeconds()
 
     minutes = querySelect.displayMinute.textContent
@@ -303,5 +314,9 @@ export const projectLogic = {
         )
       }
     }
+  },
+
+  resetIdTimerOut(){
+    IdTimerOut = 0
   },
 }

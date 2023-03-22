@@ -12,17 +12,20 @@ export const startupControl = {
 
   buttonPause(event) {
     event.preventDefault(event)
-    controlButtons.pause()
     audioData.buttonPressAudio.play()
+    controlButtons.pause()
     projectLogic.clearTimeout()
+    projectLogic.resetIdTimerOut()
     
   },
 
   buttonStop(event) {
     event.preventDefault(event)
     audioData.buttonPressAudio.play()
-    projectLogic.StopDisplayTimer()
     controlButtons.pause()
+    projectLogic.StopDisplayTimer()
+    projectLogic.resetIdTimerOut()
+    
   },
 
   buttonEncrement(event) {
@@ -41,7 +44,6 @@ export const startupControl = {
 
   buttonLofiTree(event) {
     event.preventDefault(event)
-
     projectLogic.hideTree()
     projectLogic.pauseContentHideTree()
     controlButtons.lofiTree()
@@ -51,7 +53,6 @@ export const startupControl = {
 
   buttonLofiCloud(event) {
     event.preventDefault(event)
-
     projectLogic.hideCloud()
     projectLogic.pauseContentHideCloud()
     controlButtons.LofiCloud()
@@ -61,7 +62,6 @@ export const startupControl = {
 
   buttonLofiCoffe(event) {
     event.preventDefault(event)
-
     projectLogic.hideCoffe()
     projectLogic.pauseContentHideCoffe()
     controlButtons.LofiCoffe()
@@ -70,7 +70,6 @@ export const startupControl = {
 
   buttonLofiFire(event) {
     event.preventDefault(event)
-
     projectLogic.hideFire()
     projectLogic.pauseContentHideFire()    
     controlButtons.LofiFire()
