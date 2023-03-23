@@ -160,7 +160,7 @@ export const projectLogic = {
       }
 
       projectLogic.countDown()
-    }, 1000)
+    }, 10)
   },
 
   clearTimeout() {
@@ -199,28 +199,17 @@ export const projectLogic = {
   },
 
   setEncrement() {
-
     if(IdTimerOut > 0){
       return
     }
 
-    projectLogic.EncrementverificationPauseDisplayMinutesAndSeconds()
+    projectLogic.EncrementverificationPauseDisplayMinute()
 
     minutes = querySelect.displayMinute.textContent
-    seconds = querySelect.displaySecond.textContent
 
-    if (seconds == 55) {
-      querySelect.displaySecond.textContent = String(Number(0)).padStart(2, "0")
-      querySelect.displayMinute.textContent = String(
-        Number(minutes) + 1
-      ).padStart(2, "0")
-    } else {
-      querySelect.displaySecond.textContent = String(
-        Number(seconds) + 5
-      ).padStart(2, "0")
-    }
+    querySelect.displayMinute.textContent = String(Number(minutes) + 5).padStart(2, "0")
 
-    if (minutes >= 99 && seconds == 55) {
+    if (minutes >= 95) {
       querySelect.displayMinute.textContent = String(Number(0)).padStart(2, "0")
       querySelect.displaySecond.textContent = String(Number(0)).padStart(2, "0")
     }
@@ -238,24 +227,11 @@ export const projectLogic = {
     projectLogic.DecrementverificationPauseDisplayMinutesAndSeconds()
 
     minutes = querySelect.displayMinute.textContent
-    seconds = querySelect.displaySecond.textContent
 
-    if (seconds == 0) {
-      querySelect.displaySecond.textContent = String(Number(55)).padStart(
-        2,
-        "0"
-      )
-      querySelect.displayMinute.textContent = String(
-        Number(minutes) - 1
-      ).padStart(2, "0")
-    } else {
-      querySelect.displaySecond.textContent = String(
-        Number(seconds) - 5
-      ).padStart(2, "0")
-    }
+    querySelect.displayMinute.textContent = String(Number(minutes) - 5).padStart(2, "0")
 
-    if (minutes == 0 && seconds == 0) {
-      querySelect.displayMinute.textContent = String(Number(99)).padStart(
+    if (minutes <= 0) {
+      querySelect.displayMinute.textContent = String(Number(95)).padStart(
         2,
         "0"
       )
@@ -265,24 +241,23 @@ export const projectLogic = {
     displaySecond = querySelect.displaySecond.textContent
   },
 
-  EncrementverificationPauseDisplayMinutesAndSeconds() {
+  EncrementverificationPauseDisplayMinute() {
     minutes = querySelect.displayMinute.textContent
-    seconds = querySelect.displaySecond.textContent
 
-    seconds = Array.from(seconds).pop()
+    minutes = Array.from(minutes).pop()
 
-    if (seconds != 0 && seconds != 5) {
-      if (seconds >= 1 && seconds <= 4) {
-        seconds = Array.from(querySelect.displaySecond.textContent).shift()
-        querySelect.displaySecond.textContent = String(seconds + 0).padStart(
+    if (minutes != 0 && minutes != 5) {
+      if (minutes >= 1 && minutes <= 4) {
+        minutes = Array.from(querySelect.displayMinute.textContent).shift()
+        querySelect.displayMinute.textContent = String(minutes + 0).padStart(
           2,
           "0"
         )
       }
 
-      if (seconds >= 6 && seconds <= 9) {
-        seconds = Array.from(querySelect.displaySecond.textContent).shift()
-        querySelect.displaySecond.textContent = String(seconds + 5).padStart(
+      if (minutes >= 6 && minutes <= 9) {
+        minutes = Array.from(querySelect.displayMinute.textContent).shift()
+        querySelect.displayMinute.textContent = String(minutes + 5).padStart(
           2,
           "0"
         )
@@ -292,23 +267,22 @@ export const projectLogic = {
 
   DecrementverificationPauseDisplayMinutesAndSeconds() {
     minutes = querySelect.displayMinute.textContent
-    seconds = querySelect.displaySecond.textContent
 
-    seconds = Array.from(seconds).pop()
+    minutes = Array.from(minutes).pop()
 
-    if (seconds != 0 && seconds != 5) {
-      if (seconds >= 1 && seconds <= 4) {
-        seconds = Array.from(querySelect.displaySecond.textContent).shift()
-        querySelect.displaySecond.textContent = String(seconds + 5).padStart(
+    if (minutes != 0 && minutes != 5) {
+      if (minutes >= 1 && minutes <= 4) {
+        minutes = Array.from(querySelect.displayMinute.textContent).shift()
+        querySelect.displayMinute.textContent = String(minutes + 5).padStart(
           2,
           "0"
         )
       }
 
-      if (seconds >= 6 && seconds <= 9) {
-        seconds = Array.from(querySelect.displaySecond.textContent).shift()
-        Number(seconds++)
-        querySelect.displaySecond.textContent = (String(seconds) + 0).padStart(
+      if (minutes >= 6 && minutes <= 9) {
+        minutes = Array.from(querySelect.displayMinute.textContent).shift()
+        Number(minutes++)
+        querySelect.displayMinute.textContent = (String(minutes) + 0).padStart(
           2,
           "0"
         )
