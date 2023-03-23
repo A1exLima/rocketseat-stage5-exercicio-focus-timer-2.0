@@ -160,7 +160,7 @@ export const projectLogic = {
       }
 
       projectLogic.countDown()
-    }, 10)
+    }, 1000)
   },
 
   clearTimeout() {
